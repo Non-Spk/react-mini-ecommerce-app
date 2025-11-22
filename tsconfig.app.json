@@ -27,7 +27,8 @@
     /* Paths */
     "paths": {
       "@/*": ["./src/*"],
-      "@asscts/*": ["./src/assets/*"]
+      "@asscts/*": ["./src/assets/*"],
+      "@pages/*": ["./src/pages/*"],
     }
 
   },
