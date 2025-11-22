@@ -34,7 +34,7 @@
       "@router/*": ["./src/router/*"],
       "@services/*": ["./src/services/*"],
       "@styles/*": ["./src/styles/*"],
-      "@types/*": ["./src/types/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
       "@utils/*": ["./src/utils/*"]
     }
 
