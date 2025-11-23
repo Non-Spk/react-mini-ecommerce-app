@@ -1,5 +1,3 @@
-import { colorTheme } from "@utils/colorTheme";
-
 interface SearchBoxProps {
     search: string;
     setSearch: (value: string) => void;
@@ -12,14 +10,6 @@ export default function SearchBox({ search, setSearch }: SearchBoxProps) {
 
     return (
         <>
-            <style>{`
-                :root {
-                    --backgroundSearchBox: ${colorTheme.backgroundSearchBox};
-                    --textLight: ${colorTheme.textLight};
-                    --border: ${colorTheme.border};
-                    --focusRing: ${colorTheme.focusRing};
-                }
-            `}</style>
             <form onSubmit={handleSearch} className="flex-1 flex justify-center">
                 <div className="w-1/3">
                     <input

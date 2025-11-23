@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { colorTheme } from "@utils/colorTheme";
 import MenuButton from "@components/Navbar/MenuButton";
 
 export default function MenuBar() {
@@ -10,11 +9,6 @@ export default function MenuBar() {
 
     return (
         <>
-            <style>{`
-                :root {
-                    --border: ${colorTheme.border};
-                }
-            `}</style>
             <div className="flex justify-between px-6 py-2 border-t border-(--border)">
                 <div className="flex gap-6">
                     {navLinks.map((item) => (

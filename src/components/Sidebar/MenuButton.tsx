@@ -1,5 +1,3 @@
-import { colorTheme } from "@utils/colorTheme";
-
 interface MenuButtonProps {
     text: string;
     active: boolean;
@@ -10,13 +8,6 @@ interface MenuButtonProps {
 export default function MenuButton({ text, active, onClick }: MenuButtonProps) {
     return (
         <>
-            <style>{`
-                :root {
-                    --textLight: ${colorTheme.textLight};
-                    --background: ${colorTheme.background};
-                    --focusRing: ${colorTheme.focusRing};
-                }
-            `}</style>
             <a
                 onClick={onClick}
                 className={`

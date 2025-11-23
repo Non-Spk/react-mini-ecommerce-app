@@ -1,6 +1,5 @@
 import { startTransition, useEffect, useState } from "react";
 
-import { colorTheme } from "@utils/colorTheme";
 import { categoryListServices } from "@services/index";
 import MenuButton from "@components/Sidebar/MenuButton";
 import type { categoryItem } from "@interfaces/category";
@@ -26,14 +25,6 @@ export default function Sidebar() {
 
     return (
         <>
-            <style>{`
-                :root {
-                    --border: ${colorTheme.border};
-                    --backgroundDark: ${colorTheme.backgroundDark};
-                    --text: ${colorTheme.text};
-                    --textLight: ${colorTheme.textLight};
-                }
-            `}</style>
             <div className="w-64 bg-(--backgroundDark)/95 flex flex-col py-4 shadow-lg">
                 <h2 className="text-lg font-bold text-(--text) mx-6 sticky top-0 z-10 px-2">
                     Categories

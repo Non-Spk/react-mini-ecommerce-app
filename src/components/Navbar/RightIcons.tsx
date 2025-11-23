@@ -1,15 +1,6 @@
-import { colorTheme } from "@utils/colorTheme";
-
 export default function RightIcons() {
     return (
         <>
-            <style>{`
-                :root {
-                    --textLight: ${colorTheme.textLight};
-                    --text: ${colorTheme.text};
-                    --background: ${colorTheme.background};
-                }
-            `}</style>
             <div className="flex items-center gap-4">
                 <button
                     className="text-(--textLight) hover:text-(--text) p-2 rounded-full hover:bg-(--background)/10 transition-colors"
