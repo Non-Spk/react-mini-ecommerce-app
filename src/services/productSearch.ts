@@ -9,10 +9,14 @@ interface IGetProductListResponse {
 
 export const productSearchServices = {
   getSearchProducts: async (
-    text?: string
+    text?: string,
+    sortBy?: string,
+    order?: string
   ): Promise<IGetProductListResponse> => {
     const response = await axios.get(
-      `${BASE_DUMMYJSON_URL}/products/search?q=${text}&select=id,title,price,rating`
+      `${BASE_DUMMYJSON_URL}/products/search?q=${text}&select=id,title,price,rating&sortBy=${
+        sortBy || "title"
+      }&order=${order || "asc"}`
     );
     return response;
   },
