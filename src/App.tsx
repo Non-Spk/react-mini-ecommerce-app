@@ -1,6 +1,6 @@
 import AppRouter from "@router/AppRouter";
 import { colorTheme } from "@utils/colorTheme";
-import Navbar from "@components/Navbar";
+import Navbar from "@/components/Navbar";
 
 function App() {
     return (
