@@ -21,3 +21,18 @@ export const productSearchServices = {
     return response;
   },
 };
+
+export const productSearchByCategoryServices = {
+  getSearchProductsByCategory: async (
+    category?: string,
+    sortBy?: string,
+    order?: string
+  ): Promise<IGetProductListResponse> => {
+    const response = await axios.get(
+      `${BASE_DUMMYJSON_URL}/products/category/${category}&sortBy=${
+        sortBy || "title"
+      }&order=${order || "asc"}`
+    );
+    return response;
+  },
+};
