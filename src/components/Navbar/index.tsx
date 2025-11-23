@@ -15,7 +15,7 @@ export default function Navbar() {
                     --text: ${colorTheme.text};
                 }
             `}</style>
-            <nav className="w-full bg-(--backgroundDark) text-(--text)">
+            <nav className="w-full bg-(--backgroundDark) text-(--text) sticky top-0 z-50">
                 <div className="flex items-center justify-between px-6 py-3">
                     <Logo />
                     <SearchBox search={search} setSearch={setSearch} />

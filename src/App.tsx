@@ -1,8 +1,7 @@
 import AppRouter from "@router/AppRouter";
 import { colorTheme } from "@utils/colorTheme";
-import Navbar from "@/components/Navbar";
 
-function App() {
+export default function App() {
     return (
         <>
             <style>{`
@@ -12,12 +11,9 @@ function App() {
                 }
             `}</style>
 
-            <div className="min-h-screen bg-(--background) text-(--textDark)">
-                <Navbar />
+            <div className="min-h-screen bg-(--background) text-(--textDark) flex flex-col">
                 <AppRouter />
             </div>
         </>
     );
 }
-
-export default App;
