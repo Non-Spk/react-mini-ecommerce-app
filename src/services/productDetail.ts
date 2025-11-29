@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_DUMMYJSON_URL } from "@utils/constant";
+import { BASE_DUMMYJSON_URL } from "@/utils/constant";
 import type { Product } from "@/interfaces/product";
 
 interface IGetProductDetailResponse {

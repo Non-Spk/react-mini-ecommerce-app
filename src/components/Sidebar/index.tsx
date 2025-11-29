@@ -1,8 +1,8 @@
 import { startTransition, useEffect, useState } from "react";
 
-import { categoryListServices } from "@services/index";
-import MenuButton from "@components/Sidebar/MenuButton";
-import type { categoryItem } from "@interfaces/category";
+import { categoryListServices } from "@/services/index";
+import MenuButton from "@/components/Sidebar/MenuButton";
+import type { categoryItem } from "@/interfaces/category";
 
 export default function Sidebar() {
     const [categories, setCategories] = useState<categoryItem[]>([]);

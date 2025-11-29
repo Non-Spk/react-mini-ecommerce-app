@@ -1,10 +1,10 @@
-import { productListServices } from "@services/productList";
-import { ProductDetailServices } from "@services/productDetail";
+import { productListServices } from "@/services/productList";
+import { ProductDetailServices } from "@/services/productDetail";
 import {
   productSearchServices,
   productSearchByCategoryServices,
-} from "@services/productSearch";
-import { categoryListServices } from "@services/categoryList";
+} from "@/services/productSearch";
+import { categoryListServices } from "@/services/categoryList";
 
 export {
   productListServices,

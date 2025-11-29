@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MenuButton from "@components/Navbar/MenuButton";
+import MenuButton from "@/components/Navbar/MenuButton";
 
 export default function MenuBar() {
     const navLinks = ["Home", "Promotions / Deals", "New Arrivals / Best Sellers", "Favorites"];
