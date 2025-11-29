@@ -1,17 +1,19 @@
-// import { categoryListServices } from "@/services/index";
-// import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
+import { useDefaultProductList } from "@/hooks";
+import { useEffect, useRef } from "react";
 
 const HomePage = () => {
-    // const callCategoryList = async () => {
-    //     const categoryList = await categoryListServices.getCategoryList().then(res => res.data).catch(err => console.log(err));
-    //     console.log(categoryList)
-    // }
+    const { result } = useDefaultProductList();
+    const logged = useRef(false);
 
-    // useEffect(() => {
-    //     callCategoryList();
-    // })
+    useEffect(() => {
+        if (!result) return;
+        if (logged.current) return;
+
+        console.log("Default Product List:", result);
+        logged.current = true;
+    }, [result]);
 
     return (
         <>
@@ -27,7 +29,7 @@ const HomePage = () => {
                 </main>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default HomePage
+export default HomePage;
