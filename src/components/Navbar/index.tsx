@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Logo from "@components/Navbar/Logo";
-import SearchBox from "@components/Navbar/SearchBox";
-import RightIcons from "@components/Navbar/RightIcons";
-import MenuBar from "@components/Navbar/MenuBar";
+import Logo from "@/components/Navbar/Logo";
+import SearchBox from "@/components/SearchBox";
+import RightIcons from "@/components/Navbar/RightIcons";
+import MenuBar from "@/components/Navbar/MenuBar";
 
 export default function Navbar() {
     const [search, setSearch] = useState("");
