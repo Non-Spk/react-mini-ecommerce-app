@@ -1,11 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import { useDefaultProductList } from "@/hooks";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const HomePage = () => {
     const { result } = useDefaultProductList();
     const logged = useRef(false);
+    const [selectedCategory, setSelectedCategory] = useState("");
 
     useEffect(() => {
         if (!result) return;
@@ -15,12 +16,18 @@ const HomePage = () => {
         logged.current = true;
     }, [result]);
 
+    useEffect(() => {
+        if (selectedCategory) {
+            console.log("Selected Category:", selectedCategory);
+        }
+    }, [selectedCategory]);
+
     return (
         <>
             <Navbar />
             <div className="flex flex-1">
                 <div className="sticky top-0">
-                    <Sidebar />
+                    <Sidebar onCategoryChange={setSelectedCategory} />
                 </div>
                 <main className="flex-1 p-6">
                     <div>
