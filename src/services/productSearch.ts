@@ -14,7 +14,7 @@ export const productSearchServices = {
     order?: string
   ): Promise<IGetProductListResponse> => {
     const response = await axios.get(
-      `${BASE_DUMMYJSON_URL}/products/search?q=${text}&select=id,title,price,rating&sortBy=${
+      `${BASE_DUMMYJSON_URL}/products/search?q=${text}&select=id,title,price,category,rating&sortBy=${
         sortBy || "title"
       }&order=${order || "asc"}`
     );
