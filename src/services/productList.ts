@@ -37,8 +37,8 @@ export const productListServices = {
     }
 };
 
-export const productDetailServices = {
-    getProductById: async (id: number): Promise<ProductItem> => {
+export const productItemServices = {
+    getProductItemById: async (id: number): Promise<ProductItem> => {
         const { data } = await axios.get<ProductItem>(`${BASE_DUMMYJSON_URL}/products/${id}`);
         return data;
     }
