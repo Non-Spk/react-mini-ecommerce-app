@@ -1,3 +1,4 @@
-import { productListServices } from "@/services/productList";
+import { productListServices, productDetailServices } from "@/services/productList";
+import { categoryListServices } from "@/services/categoryList";
 
-export { productListServices };
+export { productListServices, productDetailServices, categoryListServices };

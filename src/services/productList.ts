@@ -1,9 +1,6 @@
 import axios from "axios";
-import type { AxiosResponse } from "axios";
 import { BASE_DUMMYJSON_URL } from "@/utils/constant";
-import type { ProductList } from "@/interfaces";
-
-type ProductListResponse = AxiosResponse<ProductList>;
+import type { ProductList, ProductItem } from "@/interfaces";
 
 export const productListServices = {
     getAllProducts: async (
@@ -11,8 +8,8 @@ export const productListServices = {
         skip?: number,
         sortBy?: string,
         order?: string
-    ): Promise<ProductListResponse> => {
-        return axios.get<ProductList>(`${BASE_DUMMYJSON_URL}/products`, {
+    ): Promise<ProductList> => {
+        const { data } = await axios.get<ProductList>(`${BASE_DUMMYJSON_URL}/products`, {
             params: {
                 limit: limit ?? 30,
                 skip: skip ?? 0,
@@ -20,16 +17,29 @@ export const productListServices = {
                 order: order ?? "asc",
             },
         });
+        return data
     },
     getAllProductsByCategory: async (
         category: string,
         sortBy?: string,
         order?: string
-    ): Promise<ProductListResponse> => {
-        const response = await axios.get(
-            `${BASE_DUMMYJSON_URL}/products/category/${category}&sortBy=${sortBy || "title"
-            }&order=${order || "asc"}`
+    ): Promise<ProductList> => {
+        const { data } = await axios.get<ProductList>(
+            `${BASE_DUMMYJSON_URL}/products/category/${encodeURIComponent(category)}`,
+            {
+                params: {
+                    sortBy: sortBy ?? "title",
+                    order: order ?? "asc",
+                },
+            }
         );
-        return response;
+        return data;
     }
 };
+
+export const productDetailServices = {
+    getProductById: async (id: number): Promise<ProductItem> => {
+        const { data } = await axios.get<ProductItem>(`${BASE_DUMMYJSON_URL}/products/${id}`);
+        return data;
+    }
+}
