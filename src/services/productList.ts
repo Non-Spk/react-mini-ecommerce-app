@@ -21,4 +21,15 @@ export const productListServices = {
             },
         });
     },
+    getAllProductsByCategory: async (
+        category: string,
+        sortBy?: string,
+        order?: string
+    ): Promise<ProductListResponse> => {
+        const response = await axios.get(
+            `${BASE_DUMMYJSON_URL}/products/category/${category}&sortBy=${sortBy || "title"
+            }&order=${order || "asc"}`
+        );
+        return response;
+    }
 };
