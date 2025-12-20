@@ -4,6 +4,7 @@ import type {
     Dimensions,
     Reviews,
     Meta,
-} from "@/interfaces/productList";
+} from "@/interfaces/product";
+import type { Category } from "@/interfaces/category";
 
-export type { ProductList, ProductItem, Dimensions, Reviews, Meta };
+export type { ProductList, ProductItem, Dimensions, Reviews, Meta, Category };
