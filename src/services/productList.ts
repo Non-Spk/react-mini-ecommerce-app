@@ -21,6 +21,8 @@ export const productListServices = {
     },
     getAllProductsByCategory: async (
         category: string,
+        limit?: number,
+        skip?: number,
         sortBy?: string,
         order?: string
     ): Promise<ProductList> => {
@@ -28,6 +30,8 @@ export const productListServices = {
             `${BASE_DUMMYJSON_URL}/products/category/${encodeURIComponent(category)}`,
             {
                 params: {
+                    limit: limit ?? 30,
+                    skip: skip ?? 0,
                     sortBy: sortBy ?? "title",
                     order: order ?? "asc",
                 },
