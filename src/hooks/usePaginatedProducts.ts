@@ -7,6 +7,7 @@ const PRODUCTS_PER_PAGE = 30;
 
 interface UsePaginatedProductsOptions {
     page: number;
+    search?: string;
     category?: string;
     sortBy?: string;
     order?: "asc" | "desc";
@@ -15,6 +16,7 @@ interface UsePaginatedProductsOptions {
 export const usePaginatedProducts = ({
     page,
     category,
+    search,
     sortBy = "title",
     order = "asc",
 }: UsePaginatedProductsOptions) => {
@@ -25,7 +27,15 @@ export const usePaginatedProducts = ({
             try {
                 const skip = (page - 1) * PRODUCTS_PER_PAGE;
                 let data: ProductList;
-                if (category) {
+                if (search) {
+                    data = await productListServices.getAllProductsBySearch(
+                        search,
+                        PRODUCTS_PER_PAGE,
+                        skip,
+                        sortBy,
+                        order
+                    );
+                } else if (category) {
                     data = await productListServices.getAllProductsByCategory(
                         category,
                         PRODUCTS_PER_PAGE,
@@ -47,7 +57,7 @@ export const usePaginatedProducts = ({
             }
         };
         fetchProducts();
-    }, [page, category, sortBy, order, setProductList]);
+    }, [page, search, category, sortBy, order, setProductList]);
 
     return productsList;
 };

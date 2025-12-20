@@ -38,8 +38,26 @@ export const productListServices = {
             }
         );
         return data;
+    },
+    getAllProductsBySearch: async (
+        search: string,
+        limit?: number,
+        skip?: number,
+        sortBy?: string,
+        order?: string
+    ): Promise<ProductList> => {
+        const { data } = await axios.get<ProductList>(`${BASE_DUMMYJSON_URL}/products/search`, {
+            params: {
+                q: search,
+                limit: limit ?? 30,
+                skip: skip ?? 0,
+                sortBy: sortBy ?? "title",
+                order: order ?? "asc",
+            },
+        });
+        return data;
     }
-};
+}
 
 export const productItemServices = {
     getProductItemById: async (id: number): Promise<ProductItem> => {
