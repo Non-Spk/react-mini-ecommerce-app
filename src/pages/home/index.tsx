@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SideBar from "@/components/SideBar";
+import ProductGallery from "@/components/ProductGallery";
 import { usePaginatedProducts } from "@/hooks/usePaginatedProducts";
 
 const PRODUCTS_PER_PAGE = 30;
@@ -35,11 +36,7 @@ export default function HomePage() {
 
             <h1>Products - Page {page} of {maxPage}</h1>
 
-            <ul>
-                {productsList.products.map(p => (
-                    <li key={p.id}>{p.title}</li>
-                ))}
-            </ul>
+            <ProductGallery products={productsList.products} />
 
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>Prev</button>
             <button onClick={() => setPage(p => p + 1)} disabled={page >= maxPage}>Next</button>
