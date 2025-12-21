@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useProductListStore } from "@/stores/productStore";
 import { usePaginatedProducts } from "./usePaginatedProducts";
+import { useProductListStore } from "@/stores";
 
 export function useHomePageProducts() {
     const storeProductsList = useProductListStore((state) => state.productsList);
@@ -30,7 +30,7 @@ export function useHomePageProducts() {
         setStoreProductsList(productsList);
     }, [productsList, setStoreProductsList]);
 
-    const maxPage = Math.ceil(productsList.total / 30);
+    const maxPage = Math.ceil(productsList.total / 30) || 1;
 
     return {
         search: searchTerm,

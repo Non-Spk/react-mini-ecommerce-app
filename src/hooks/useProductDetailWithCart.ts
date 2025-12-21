@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useProductDetail } from "@/hooks/useProductDetail";
+import { useProductDetail } from "./useProductDetail";
 import { useCartStore } from "@/stores";
 
 export function useProductDetailWithCart() {
@@ -10,21 +10,13 @@ export function useProductDetailWithCart() {
     const addItem = useCartStore((s) => s.addItem);
     const items = useCartStore((s) => s.items);
     const navigate = useNavigate();
+
     const handleAddToCart = () => {
         if (!id || !product) return;
         addItem(Number(id), quantity);
-        console.log("Current cart items:", [
-            ...items,
-            { productId: Number(id), quantity },
-        ]);
+        console.log("Current cart items:", [...items, { productId: Number(id), quantity }]);
         navigate("/");
     };
-    return {
-        product,
-        loading,
-        error,
-        quantity,
-        setQuantity,
-        handleAddToCart,
-    };
+
+    return { product, loading, error, quantity, setQuantity, handleAddToCart };
 }

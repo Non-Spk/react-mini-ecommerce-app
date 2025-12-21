@@ -1,7 +1,15 @@
-import { usePaginatedProducts } from "@/hooks/usePaginatedProducts"
-import { useCategories } from "@/hooks/useCategories";
-import { useProductDetail } from "@/hooks/useProductDetail";
-import { useProductDetailWithCart } from "@/hooks/useProductDetailWithCart";
-import { useHomePageProducts } from "@/hooks/useHomePageProducts";
+import { usePaginatedProducts } from "./usePaginatedProducts";
+import { useCategories } from "./useCategories";
+import { useProductDetail } from "./useProductDetail";
+import { useProductDetailWithCart } from "./useProductDetailWithCart";
+import { useHomePageProducts } from "./useHomePageProducts";
+import { useProductsByCategory } from "./useProductsByCategory";
 
-export { usePaginatedProducts, useCategories, useProductDetail, useProductDetailWithCart, useHomePageProducts };
+export {
+    usePaginatedProducts,
+    useCategories,
+    useProductDetail,
+    useProductDetailWithCart,
+    useHomePageProducts,
+    useProductsByCategory,
+};

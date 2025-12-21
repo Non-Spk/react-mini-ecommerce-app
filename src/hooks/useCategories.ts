@@ -8,16 +8,16 @@ export function useCategories() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchCategories = async () => {
+        async function fetchCategories() {
             try {
                 const data = await categoryListServices.getAllCategories();
                 setCategories(data);
             } catch (err) {
-                setError(`Error fetching categories: ${err}`);
+                setError(err instanceof Error ? err.message : String(err));
             } finally {
                 setLoading(false);
             }
-        };
+        }
         fetchCategories();
     }, []);
 
