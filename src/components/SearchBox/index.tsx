@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useHomePageProducts } from "@/hooks/useHomePageProducts";
+import { useHomePageProducts } from "@/hooks";
 
 export default function SearchBox() {
     const navigate = useNavigate();
