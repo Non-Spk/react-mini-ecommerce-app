@@ -1,4 +1,3 @@
-// src/pages/home/index.tsx
 import SideBar from "@/components/SideBar";
 import ProductGallery from "@/components/ProductGallery";
 import { useHomePageProducts } from "@/hooks";
@@ -6,13 +5,16 @@ import Navbar from "@/components/NavBar";
 import Pagination from "@/components/Pagination";
 
 export default function HomePage() {
+    const params = new URLSearchParams(window.location.search);
+    const initialSearch = params.get("search") ?? undefined;
+
     const {
         page,
         productsList,
         maxPage,
         handleSetCategory,
         setPage,
-    } = useHomePageProducts();
+    } = useHomePageProducts(initialSearch);
 
     return (
         <div className="min-h-screen flex flex-col bg-(--background) text-(--text)">

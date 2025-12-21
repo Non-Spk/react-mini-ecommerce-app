@@ -15,18 +15,22 @@ export default function ProductCard({ product }: Props) {
                 currency: "USD",
             }).format(product.price)
             : null;
+
     const stars = Math.round(product.rating || 0);
     const starArray = Array.from({ length: 5 }, (_, i) => i < stars);
+
     return (
         <div
             onClick={() => navigate(`/product/${product.id}`)}
             className="cursor-pointer bg-(--bg-primary) text-(--text-primary) rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col"
         >
-            <img
-                src={product.images?.[0]}
-                alt={product.title}
-                className="w-full h-48 object-cover rounded-md mb-3"
-            />
+            <div className="h-full overflow-hidden rounded-md mb-3">
+                <img
+                    src={product.images?.[0]}
+                    alt={product.title}
+                    className="w-full h-full object-cover"
+                />
+            </div>
             <h3 className="text-lg font-semibold mb-3">{product.title}</h3>
             <div className="flex justify-between items-center mt-auto">
                 <div className="flex space-x-1">

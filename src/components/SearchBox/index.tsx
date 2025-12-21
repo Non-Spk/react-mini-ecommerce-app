@@ -1,14 +1,27 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import { useHomePageProducts } from "@/hooks/useHomePageProducts";
 
 export default function SearchBox() {
+    const navigate = useNavigate();
+    const location = useLocation();
     const { search, handleSearch } = useHomePageProducts();
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         handleSearch(e.target.value);
     };
 
+    const onSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (location.pathname === "/") {
+            handleSearch(search ?? "");
+        } else {
+            navigate(`/?search=${encodeURIComponent(search ?? "")}`);
+        }
+    };
+
     return (
-        <form onSubmit={(e) => e.preventDefault()} className="flex-1 flex justify-center">
+        <form onSubmit={onSubmit} className="flex-1 flex justify-center">
             <div className="w-1/3">
                 <input
                     type="text"

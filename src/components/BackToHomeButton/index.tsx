@@ -6,7 +6,7 @@ export default function BackToHomeButton() {
     return (
         <button
             onClick={() => navigate("/")}
-            className="px-4 py-2 border rounded cursor-pointer"
+            className="px-4 py-2 border border-(--border-color) text-(--text-primary) rounded hover:bg-(--bg-primary)/10 transition"
         >
             ← Back to Home
         </button>
