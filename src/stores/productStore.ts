@@ -6,7 +6,6 @@ interface ProductListStore {
     setProductList: (newProductsList: ProductList) => void
     getProductList: () => ProductList
 
-    // เพิ่ม search term และ category
     searchTerm: string
     setSearchTerm: (term: string) => void
 
@@ -29,7 +28,7 @@ export const useProductListStore = create<ProductListStore>((set, get) => ({
     setSearchTerm: (term: string) => set({ searchTerm: term }),
 
     category: undefined,
-    setCategory: (category?: string) => set({ category }), // ต้องใช้เพื่อ active + filter
+    setCategory: (category?: string) => set({ category }),
 }));
 
 

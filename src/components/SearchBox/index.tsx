@@ -12,7 +12,7 @@ export default function SearchBox() {
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (window.location.pathname !== "/") {
-            navigate("/"); // redirect หน้า HomePage แต่ state search อยู่ใน store
+            navigate("/");
         }
     };
 
