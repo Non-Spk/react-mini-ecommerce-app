@@ -1,1 +1,33 @@
 @import "tailwindcss";
+:root {
+  /* Backgrounds */
+  --bg-primary: #FEFEFE;
+  --bg-secondary: #1F2937;
+  --bg-search-box: #111827;
+
+  /* Borders & focus */
+  --border-color: #313133;
+  --focus-ring: #2563EB;
+
+  /* Text */
+  --text-primary: #000000;
+  --text-secondary: #DEDEE0;
+  --text-inverse: #FFFFFF;
+
+  /* Branding / Accent */
+  --logo-color: #545FCA;
+}
+
+/* Dark theme override */
+.dark {
+  --bg-primary: #1F2937;
+  --bg-secondary: #111827;
+  --text-primary: #FFFFFF;
+  --text-secondary: #DEDEE0;
+  --text-inverse: #000000;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
