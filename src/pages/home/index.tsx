@@ -5,22 +5,23 @@ import Navbar from "@/components/NavBar";
 import Pagination from "@/components/Pagination";
 
 export default function HomePage() {
-    const params = new URLSearchParams(window.location.search);
-    const initialSearch = params.get("search") ?? undefined;
-
     const {
+        category,
         page,
         productsList,
         maxPage,
         handleSetCategory,
         setPage,
-    } = useHomePageProducts(initialSearch);
+    } = useHomePageProducts(); // ไม่ต้องส่ง initialSearch
 
     return (
         <div className="min-h-screen flex flex-col bg-(--background) text-(--text)">
             <Navbar />
             <section className="flex flex-1">
-                <SideBar onSelectCategory={handleSetCategory} />
+                <SideBar
+                    selectedCategory={category} // ส่ง category ปัจจุบัน
+                    onSelectCategory={handleSetCategory}
+                />
                 <div className="flex-1 p-4">
                     <ProductGallery products={productsList.products} />
                     <Pagination

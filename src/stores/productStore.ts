@@ -5,6 +5,13 @@ interface ProductListStore {
     productsList: ProductList
     setProductList: (newProductsList: ProductList) => void
     getProductList: () => ProductList
+
+    // เพิ่ม search term และ category
+    searchTerm: string
+    setSearchTerm: (term: string) => void
+
+    category: string | undefined
+    setCategory: (category?: string) => void
 }
 
 interface ProductItemStore {
@@ -14,16 +21,17 @@ interface ProductItemStore {
 }
 
 export const useProductListStore = create<ProductListStore>((set, get) => ({
-    productsList: {
-        products: [],
-        total: 0,
-        skip: 0,
-        limit: 0,
-    },
-    setProductList: (newProductsList: ProductList) =>
-        set({ productsList: newProductsList }),
-    getProductList: (): ProductList => get().productsList,
-}))
+    productsList: { products: [], total: 0, skip: 0, limit: 0 },
+    setProductList: (newProductsList) => set({ productsList: newProductsList }),
+    getProductList: () => get().productsList,
+
+    searchTerm: "",
+    setSearchTerm: (term: string) => set({ searchTerm: term }),
+
+    category: undefined,
+    setCategory: (category?: string) => set({ category }), // ต้องใช้เพื่อ active + filter
+}));
+
 
 export const useProductItemStore = create<ProductItemStore>((set, get) => ({
     product: null,

@@ -22,20 +22,45 @@ export const usePaginatedProducts = ({
 }: UsePaginatedProductsOptions) => {
     const productsList = useProductListStore(state => state.productsList);
     const setProductList = useProductListStore(state => state.setProductList);
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 const skip = (page - 1) * PRODUCTS_PER_PAGE;
                 let data: ProductList;
+
                 if (search) {
+                    // fetch search ก่อน
                     data = await productListServices.getAllProductsBySearch(
                         search,
-                        PRODUCTS_PER_PAGE,
-                        skip,
+                        0, // fetch all หรือจำนวนมากพอที่จะ filter
+                        0,
                         sortBy,
                         order
                     );
+
+                    // filter category ฝั่ง client
+                    if (category) {
+                        const filteredProducts = data.products.filter(
+                            (p) => p.category === category
+                        );
+                        data = {
+                            ...data,
+                            products: filteredProducts.slice(skip, skip + PRODUCTS_PER_PAGE),
+                            total: filteredProducts.length,
+                            skip,
+                            limit: PRODUCTS_PER_PAGE,
+                        };
+                    } else {
+                        data = {
+                            ...data,
+                            products: data.products.slice(skip, skip + PRODUCTS_PER_PAGE),
+                            skip,
+                            limit: PRODUCTS_PER_PAGE,
+                        };
+                    }
                 } else if (category) {
+                    // fetch category อย่างเดียว
                     data = await productListServices.getAllProductsByCategory(
                         category,
                         PRODUCTS_PER_PAGE,
@@ -44,6 +69,7 @@ export const usePaginatedProducts = ({
                         order
                     );
                 } else {
+                    // fetch all
                     data = await productListServices.getAllProducts(
                         PRODUCTS_PER_PAGE,
                         skip,
@@ -51,11 +77,13 @@ export const usePaginatedProducts = ({
                         order
                     );
                 }
+
                 setProductList(data);
             } catch (error) {
                 console.error("Failed to fetch products:", error);
             }
         };
+
         fetchProducts();
     }, [page, search, category, sortBy, order, setProductList]);
 

@@ -1,9 +1,8 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useHomePageProducts } from "@/hooks/useHomePageProducts";
 
 export default function SearchBox() {
     const navigate = useNavigate();
-    const location = useLocation();
     const { search, handleSearch } = useHomePageProducts();
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,11 +11,8 @@ export default function SearchBox() {
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
-        if (location.pathname === "/") {
-            handleSearch(search ?? "");
-        } else {
-            navigate(`/?search=${encodeURIComponent(search ?? "")}`);
+        if (window.location.pathname !== "/") {
+            navigate("/"); // redirect หน้า HomePage แต่ state search อยู่ใน store
         }
     };
 
@@ -26,7 +22,7 @@ export default function SearchBox() {
                 <input
                     type="text"
                     placeholder="Search products..."
-                    value={search ?? ""}
+                    value={search}
                     onChange={onChange}
                     className="w-full dark bg-(--bg-secondary) text-(--text-secondary) rounded-md px-4 py-2 border border-(--border-color) outline-none focus:ring-2 focus:ring-(--focus-ring)"
                 />

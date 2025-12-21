@@ -1,37 +1,39 @@
 import { useState, useEffect } from "react";
 import { useProductListStore } from "@/stores/productStore";
-import { usePaginatedProducts } from "@/hooks/usePaginatedProducts";
+import { usePaginatedProducts } from "./usePaginatedProducts";
 
-const PRODUCTS_PER_PAGE = 30;
-
-export function useHomePageProducts(initialSearch?: string) {
-    const [search, setSearch] = useState<string | undefined>(initialSearch);
-    const [category, setCategory] = useState<string>();
-    const [page, setPage] = useState(1);
-
+export function useHomePageProducts() {
     const storeProductsList = useProductListStore((state) => state.productsList);
     const setStoreProductsList = useProductListStore((state) => state.setProductList);
+
+    const searchTerm = useProductListStore((state) => state.searchTerm);
+    const setSearchTerm = useProductListStore((state) => state.setSearchTerm);
+
+    const category = useProductListStore((state) => state.category);
+    const setCategory = useProductListStore((state) => state.setCategory);
+
+    const [page, setPage] = useState(1);
+
+    const handleSearch = (query: string) => {
+        setSearchTerm(query);
+        setPage(1);
+    };
 
     const handleSetCategory = (newCategory?: string) => {
         setCategory(newCategory);
         setPage(1);
     };
 
-    const handleSearch = (query: string) => {
-        setSearch(query);
-        setPage(1);
-    };
-
-    const productsList = usePaginatedProducts({ page, category, search });
+    const productsList = usePaginatedProducts({ page, category, search: searchTerm });
 
     useEffect(() => {
         setStoreProductsList(productsList);
     }, [productsList, setStoreProductsList]);
 
-    const maxPage = Math.ceil(productsList.total / PRODUCTS_PER_PAGE);
+    const maxPage = Math.ceil(productsList.total / 30);
 
     return {
-        search,
+        search: searchTerm,
         category,
         page,
         productsList: storeProductsList,
