@@ -1,6 +1,7 @@
 import ProductDetailView from "@/components/ProductDetailView";
 import QuantitySelector from "@/components/QuantitySelector";
 import AddToCartButton from "@/components/AddToCartButton";
+import RatingStarList from "@/components/RatingStarList";
 import type { ProductItem } from "@/interfaces";
 
 type Props = {
@@ -31,9 +32,7 @@ export default function ProductDetailMain({ product, quantity, setQuantity, hand
                 {/* Rating */}
                 {product.rating !== undefined && (
                     <div className="flex items-center gap-2">
-                        <span className="text-yellow-400 font-semibold">
-                            {Array.from({ length: 5 }, (_, i) => (i < Math.round(product.rating || 0) ? "★" : "☆")).join("")}
-                        </span>
+                        <RatingStarList rating={product.rating} size={20} />
                         <span className="text-(--text-secondary)">({product.rating})</span>
                     </div>
                 )}
