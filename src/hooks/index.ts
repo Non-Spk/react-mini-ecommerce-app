@@ -1,3 +1,5 @@
 import { usePaginatedProducts } from "@/hooks/usePaginatedProducts"
+import { useCategories } from "@/hooks/useCategories";
+import { useProductDetail } from "@/hooks/useProductDetail";
 
-export { usePaginatedProducts };
+export { usePaginatedProducts, useCategories, useProductDetail };

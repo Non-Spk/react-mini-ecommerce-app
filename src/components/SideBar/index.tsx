@@ -1,5 +1,5 @@
 import CategoryButton from "@/components/CategoryButton";
-import { useCategories } from "@/hooks/useCategories";
+import { useCategories } from "@/hooks";
 
 interface SideBarProps {
     onSelectCategory: (category?: string) => void;
