@@ -34,7 +34,7 @@ Make sure you have the following installed:
 1.  **Clone the repository:**
 
     ```bash
-    git clone <repository-url> # Replace with your repository URL
+    git clone https://github.com/Non-Spk/react-mini-ecommerce-app.git
     cd react-mini-ecommerce-app
     ```
 
