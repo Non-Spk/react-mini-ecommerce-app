@@ -1,18 +1,18 @@
 import HomePage from "@/pages/home";
 import ProductDetailPage from "@/pages/productDetail";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
 export default function AppRouter() {
-    const router = createBrowserRouter([
+    const router = createHashRouter([
         {
             path: "/",
             element: <HomePage />,
         },
         {
-            path: '/product/:id',
+            path: "/product/:id",
             element: <ProductDetailPage />,
         }
-    ])
+    ]);
 
-    return < RouterProvider router={router} />
+    return <RouterProvider router={router} />
 }

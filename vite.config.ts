@@ -5,10 +5,11 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
+    plugins: [react(), tailwindcss()],
+    base: '/react-mini-ecommerce-app/',
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "src"),
+        },
     },
-  },
 });
