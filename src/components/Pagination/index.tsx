@@ -1,8 +1,8 @@
 interface PaginationProps {
     page: number;
     maxPage: number;
-    onPrev: () => void;
-    onNext: () => void;
+    onPrev?: () => void;
+    onNext?: () => void;
 }
 
 export default function Pagination({ page, maxPage, onPrev, onNext }: PaginationProps) {

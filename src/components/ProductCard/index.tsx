@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import type { ProductItem } from "@/interfaces/product";
-import RatingStar from "@/components/RatingStar";
+import RatingStarList from "@/components/RatingStarList";
+import { formatPrice } from "@/utils/format";
 
 type Props = {
     product: ProductItem;
@@ -8,16 +9,7 @@ type Props = {
 
 export default function ProductCard({ product }: Props) {
     const navigate = useNavigate();
-    const formattedPrice =
-        product.price !== undefined
-            ? new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-            }).format(product.price)
-            : null;
-
-    const stars = Math.round(product.rating || 0);
-    const starArray = Array.from({ length: 5 }, (_, i) => i < stars);
+    const formattedPrice = formatPrice(product.price);
 
     return (
         <div
@@ -33,14 +25,8 @@ export default function ProductCard({ product }: Props) {
             </div>
             <h3 className="text-lg font-semibold mb-3">{product.title}</h3>
             <div className="flex justify-between items-center mt-auto">
-                <div className="flex space-x-1">
-                    {starArray.map((filled, idx) => (
-                        <RatingStar key={idx} filled={filled} size={16} />
-                    ))}
-                </div>
-                {formattedPrice && (
-                    <span className="text-green-500 font-medium">{formattedPrice}</span>
-                )}
+                <RatingStarList rating={product.rating} />
+                {formattedPrice && <span className="text-green-500 font-medium">{formattedPrice}</span>}
             </div>
         </div>
     );
