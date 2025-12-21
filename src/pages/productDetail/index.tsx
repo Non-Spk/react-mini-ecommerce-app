@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useProductDetail } from "@/hooks/useProductDetail";
+import BackToHomeButton from "@/components/BackToHomeButton";
 import ProductDetailView from "@/components/ProductDetailView";
 
 export default function ProductDetailPage() {
@@ -9,5 +10,10 @@ export default function ProductDetailPage() {
     if (loading) return <div>Loading...</div>;
     if (error || !product) return <div>Product not found</div>;
 
-    return <ProductDetailView product={product} />;
+    return (
+        <>
+            <ProductDetailView product={product} />
+            <BackToHomeButton />
+        </>
+    );
 }
